@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ouafff</string>
+    <string name="identite">identité :</string>
+    <string name="race">race :</string>
+    <string name="genre">genre :</string>
+    <string name="poids">poids :</string>
+    <string name="kg">Kg</string>
+    <string name="agressivite">agressivité :</string>
+</resources>
