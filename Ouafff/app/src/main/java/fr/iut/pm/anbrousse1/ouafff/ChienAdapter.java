@@ -26,12 +26,18 @@ public class ChienAdapter extends RecyclerView.Adapter<ChienAdapter.ViewHolder> 
             tv_nom = (TextView)itemView.findViewById(R.id.nom_chien);
             tv_race = (TextView)itemView.findViewById(R.id.race_chien);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_layout);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
     }
     private List<Chien> chiens;
     private Context context;
 
-    public ChienAdapter(List<Chien> chiens, Context context) {
+    public ChienAdapter(Context context,List<Chien> chiens) {
         this.chiens = chiens;
         this.context = context;
     }
@@ -71,9 +77,14 @@ public class ChienAdapter extends RecyclerView.Adapter<ChienAdapter.ViewHolder> 
                 break;
             default : break;
 
+
+
         }
 
     }
+
+
+
 
     @Override
     public int getItemCount() {
