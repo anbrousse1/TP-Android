@@ -1,11 +1,15 @@
 package fr.iut.pm.anbrousse1.ouafff;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.view.menu.MenuAdapter;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,18 +24,14 @@ public class ChienAdapter extends RecyclerView.Adapter<ChienAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView tv_nom, tv_race;
-        LinearLayout linearLayout ;
-        public ViewHolder(View itemView) {
+        LinearLayout linearLayout;
+
+        public ViewHolder(final View itemView) {
             super(itemView);
             tv_nom = (TextView)itemView.findViewById(R.id.nom_chien);
             tv_race = (TextView)itemView.findViewById(R.id.race_chien);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.linear_layout);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
 
-                }
-            });
         }
     }
     private List<Chien> chiens;
@@ -40,6 +40,7 @@ public class ChienAdapter extends RecyclerView.Adapter<ChienAdapter.ViewHolder> 
     public ChienAdapter(Context context,List<Chien> chiens) {
         this.chiens = chiens;
         this.context = context;
+
     }
 
 
@@ -58,7 +59,7 @@ public class ChienAdapter extends RecyclerView.Adapter<ChienAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Chien c = chiens.get(position);
         holder.tv_nom.setText(c.getNom());
         holder.tv_race.setText(c.getRace());
@@ -76,10 +77,14 @@ public class ChienAdapter extends RecyclerView.Adapter<ChienAdapter.ViewHolder> 
                 holder.linearLayout.setBackgroundColor(context.getResources().getColor(R.color.rouge));
                 break;
             default : break;
-
-
-
         }
+
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MasterActivity.openDetail(position);
+            }
+        });
 
     }
 

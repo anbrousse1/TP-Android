@@ -118,6 +118,7 @@
             android:numStars="3"
             android:stepSize="1"
             android:rating="2"
+            android:id="@+id/ratingbar"
             />
 
     </LinearLayout>
